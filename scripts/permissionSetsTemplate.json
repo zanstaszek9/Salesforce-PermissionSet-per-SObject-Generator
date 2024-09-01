@@ -1,0 +1,38 @@
+[
+  {
+    "ApiName": "View_{sObjectName}",
+    "Label": "View {sObjectName}",
+    "Description": "Read only all {sObjectName} fields",
+    "FieldEditable": false,
+    "ObjCreate": false,
+    "ObjEdit": false,
+    "ObjDelete": false
+  },
+  {
+    "ApiName": "Create_{sObjectName}",
+    "Label": "Create {sObjectName}",
+    "Description": "Read and Create all {sObjectName} fields",
+    "FieldEditable": true,
+    "ObjCreate": true,
+    "ObjEdit": false,
+    "ObjDelete": false
+  },
+  {
+    "ApiName": "Update_{sObjectName}",
+    "Label": "Update {sObjectName}",
+    "Description": "Read and Edit all {sObjectName} fields",
+    "FieldEditable": true,
+    "ObjCreate": false,
+    "ObjEdit": true,
+    "ObjDelete": false
+  },
+  {
+    "ApiName": "Manage_{sObjectName}",
+    "Label": "Manage {sObjectName}",
+    "Description": "Read, Create, Edit and Delete all {sObjectName} fields",
+    "FieldEditable": true,
+    "ObjCreate": true,
+    "ObjEdit": true,
+    "ObjDelete": true
+  }
+]
