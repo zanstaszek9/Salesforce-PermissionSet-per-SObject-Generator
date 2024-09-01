@@ -40,6 +40,14 @@ This PowerShell script automates the generation of Salesforce Permission Sets. B
 ]
 ```
 
+Generates following structure:
+```
+📂permissionsets
+ ┗ 📂Opportunity
+  ┗ 📜View_Opportunity.permissionset-meta.xml
+  ┗ 📜Create_Opportunity.permissionset-meta.xml
+```
+ 
 #### `View_Opportunity.permissionset-meta.xml`
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
