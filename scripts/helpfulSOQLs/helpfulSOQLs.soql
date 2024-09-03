@@ -1,0 +1,10 @@
+//Get names of Permission Sets where the Field has declared access. You need to exclude the stuff prefixed with ‘X00’ otherwise you will see Profiles returned as well. Source: mathewkhan at Reddit, https://www.reddit.com/r/salesforce/comments/15s4845/comment/jwcjm89/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+SELECT ParentId, Parent.Type, Parent.Name, PermissionsRead, PermissionsEdit
+FROM FieldPermissions
+WHERE Field = 'Lead.Email' AND (NOT Parent.Name LIKE 'X00%')
+
+
+//Get names of Permission Sets where the Object has declared access. You need to exclude the stuff prefixed with ‘X00’ otherwise you will see Profiles returned as well. Source: mathewkhan at Reddit, https://www.reddit.com/r/salesforce/comments/15s4845/comment/jwf7fd3/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+SELECT ParentId, Parent.Type, Parent.Name, PermissionsCreate, PermissionsRead, PermissionsEdit, PermissionsDelete, PermissionsViewAllRecords, PermissionsModifyAllRecords
+FROM ObjectPermissions
+WHERE SobjectType = 'Account' AND (NOT Parent.Name LIKE 'X00%')
