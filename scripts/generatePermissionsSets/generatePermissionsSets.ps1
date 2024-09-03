@@ -104,6 +104,10 @@ foreach ($sObjectName in $sObjectNames)
     # Retrieve SObject description using SF CLI (SFDX) and convert to JSON
     $sobjectDescriptionJson = sf sobject describe --sobject $sObjectName -o $targetOrg | ConvertFrom-Json   #https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_sobject_commands_unified.htm#cli_reference_sobject_describe_unified
 
+    # Prepare Tab Name for tabVisibility
+    $isCustom = $sobjectDescriptionJson.custom;
+    $tabName = If ($isCustom) {"$sObjectName"} Else {"standard-$sObjectName"} #Example: standard-Account, standard-ServiceAppointment
+
     if ($null -eq $sobjectDescriptionJson)
     {
         Write-Error "Something went wrong during SF CLI call. The command output is empty. Input passed: '$sObjectName'"
@@ -132,6 +136,7 @@ foreach ($sObjectName in $sObjectNames)
         $objCreate = $permissionSetTemplate.ObjCreate.ToString().ToLower()
         $objEdit = $permissionSetTemplate.ObjEdit.ToString().ToLower()
         $objDelete = $permissionSetTemplate.ObjDelete.ToString().ToLower()
+        $tabVisibility = ($permissionSetTemplate.TabVisibility, 'None', 1 -ne $null)[0] #https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_permissionset.htm#PermissionSetTabVisibility_title
 
         $xmlFileName = "${permissionSetsFolder}/${sObjectName}/${apiName}.permissionset-meta.xml"
 
@@ -170,6 +175,10 @@ foreach ($sObjectName in $sObjectNames)
         <object>$sObjectName</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <tabSettings>
+        <tab>$tabName</tab>
+        <visibility>$tabVisibility</visibility>
+    </tabSettings>
 </PermissionSet>
 "@
 

@@ -15,7 +15,8 @@
     "FieldEditable": true,
     "ObjCreate": true,
     "ObjEdit": false,
-    "ObjDelete": false
+    "ObjDelete": false,
+    "TabVisibility": "Available"
   },
   {
     "ApiName": "Update_{sObjectName}",
@@ -24,7 +25,8 @@
     "FieldEditable": true,
     "ObjCreate": false,
     "ObjEdit": true,
-    "ObjDelete": false
+    "ObjDelete": false,
+    "TabVisibility": "Available"
   },
   {
     "ApiName": "Manage_{sObjectName}",
@@ -33,6 +35,7 @@
     "FieldEditable": true,
     "ObjCreate": true,
     "ObjEdit": true,
-    "ObjDelete": true
+    "ObjDelete": true,
+    "TabVisibility": "Visible"
   }
 ]

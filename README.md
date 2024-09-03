@@ -35,7 +35,8 @@ This PowerShell script automates the generation of Salesforce Permission Sets. B
     "FieldEditable": true,
     "ObjCreate": true,
     "ObjEdit": false,
-    "ObjDelete": false
+    "ObjDelete": false,
+    "TabVisibility": "Available"
   }
 ]
 ```
@@ -99,6 +100,10 @@ Generates following structure:
         <object>Opportunity</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <tabSettings>
+      <tab>standard-Opportunity</tab>
+      <visibility>None</visibility>
+    </tabSettings>
 </PermissionSet>
 
 ```
@@ -154,6 +159,10 @@ Generates following structure:
         <object>Opportunity</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+  <tabSettings>
+    <tab>standard-Opportunity</tab>
+    <visibility>Available</visibility>
+  </tabSettings>
 </PermissionSet>
 
 ```
