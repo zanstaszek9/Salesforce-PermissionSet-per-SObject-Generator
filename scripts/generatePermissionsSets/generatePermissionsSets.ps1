@@ -129,8 +129,9 @@ foreach ($sObjectName in $sObjectNames)
     foreach ($permissionSetTemplate in $permissionSetsTemplates)
     {
 
-        $apiName = $permissionSetTemplate.ApiName -replace '\{sObjectName\}', $sObjectName
-        $label = $permissionSetTemplate.Label -replace '\{sObjectName\}', $sObjectName
+        $sObjectNameWithoutDoubleDashSuffix = $sObjectName -replace '__.*$', ''
+
+        $apiName = $permissionSetTemplate.ApiName -replace '\{sObjectName\}', $sObjectNameWithoutDoubleDashSuffix        $label = $permissionSetTemplate.Label -replace '\{sObjectName\}', $sObjectName
         $description = $permissionSetTemplate.Description -replace '\{sObjectName\}', $sObjectName
         $fieldEditable = $permissionSetTemplate.FieldEditable.ToString().ToLower()
         $objCreate = $permissionSetTemplate.ObjCreate.ToString().ToLower()
